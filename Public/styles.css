@@ -1,0 +1,214 @@
+* {
+	margin:0;
+	padding:0;
+}
+
+header {
+	margin-top:0px;
+    width: 100%;
+    overflow: hidden;
+    height: 70px;
+    position: relative;
+}
+
+body {
+	background-image: url("RED.png");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+
+h1 {
+        font-family: 'Orbitron', sans-serif;
+}
+
+nav {
+    top:0px;
+    position: absolute;
+    left:0;
+    right:0;
+	margin:0px auto;
+	max-width:4000px;
+	width:100%;
+}
+
+nav ul {
+	list-style:none;
+}
+
+nav > ul {
+	display:table;
+	width:100%;
+	background:#000;
+	position:relative;
+}
+
+nav > ul li {
+	display:table-cell;
+}
+
+nav > ul li a {
+	color:#fff;
+	font-size: larger;
+        font-family: 'Orbitron', sans-serif;
+	display:block;
+	line-height:20px;
+	padding:20px;
+	position: relative;
+	text-align:center;
+	text-decoration:none;
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+
+nav > ul > li > a span {
+	background:#174459;
+	display:block;
+	height:100%;
+	width:100%;
+	left:0;
+	position:absolute;
+	top:-55px;
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+
+nav > ul > li > a span .icon {
+	display:block;
+	line-height:60px;
+	color:#fff;
+}
+
+nav > ul > li > a:hover > span {
+	top:0;
+}
+
+/*Colores*/
+nav ul li a .primero {
+	background:#0e5061;
+}
+
+nav ul li a .segundo {
+	background:#5da5a2;
+}
+
+nav ul li a .tercero {
+	background:#f25724;
+}
+
+/*button style*/
+.myButton {
+	display: block;
+	vertical-align: bottom;
+	-moz-box-shadow:inset 0px 1px 3px 0px #91b8b3;
+	-webkit-box-shadow:inset 0px 1px 3px 0px #91b8b3;
+	box-shadow:inset 0px 1px 3px 0px #91b8b3;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #202927), color-stop(1, #32b8b8));
+	background:-moz-linear-gradient(top, #202927 5%, #32b8b8 100%);
+	background:-webkit-linear-gradient(top, #202927 5%, #32b8b8 100%);
+	background:-o-linear-gradient(top, #202927 5%, #32b8b8 100%);
+	background:-ms-linear-gradient(top, #202927 5%, #32b8b8 100%);
+	background:linear-gradient(to bottom, #202927 5%, #32b8b8 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#202927', endColorstr='#32b8b8',GradientType=0);
+	background-color:#202927;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	border:1px solid #474f4c;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:11px 23px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #2b665e;
+}
+.myButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #32b8b8), color-stop(1, #202927));
+	background:-moz-linear-gradient(top, #32b8b8 5%, #202927 100%);
+	background:-webkit-linear-gradient(top, #32b8b8 5%, #202927 100%);
+	background:-o-linear-gradient(top, #32b8b8 5%, #202927 100%);
+	background:-ms-linear-gradient(top, #32b8b8 5%, #202927 100%);
+	background:linear-gradient(to bottom, #32b8b8 5%, #202927 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#32b8b8', endColorstr='#202927',GradientType=0);
+	background-color:#32b8b8;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+button:hover {
+cursor:pointer
+}
+
+.round-button{
+	display: inline-block;
+	    text-decoration: none;
+	    color: #FFF;
+	    width: 25px;
+	    height: 25px;
+	    line-height: 120px;
+	    border-radius: 50%;
+	    text-align: center;
+	    font-weight: bold;
+	    vertical-align: middle;
+	    overflow: hidden;
+	    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+	    border-bottom: solid 3px #bd6565;
+	    transition: .4s;
+			position: relative;
+}
+
+.round-button:active{
+			-ms-transform: translateY(2px);
+	    -webkit-transform: translateY(2px);
+	    transform: translateY(2px);
+	    box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+	    border-bottom: none;
+}
+
+/*Style del modal*/
+.modal-title {  font-family: 'Orbitron', sans-serif;}
+.modal-content {width: 1000px; height:600px; position: absolute;}
+.modal-body {width: 670px; height:475px;}
+
+
+.emergencia{
+    display: inline-block;
+		position: absolute;
+		z-index: 1
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: red;/*ButtonColor*/
+    color: black;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+		width: 160px;
+		height: 130px
+		overflow: auto;
+		font-family: 'Orbitron', sans-serif;
+}
+.emergencia:active {/*OnClick*/
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*Move down*/
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*Reduce Shadow*/
+    border-bottom: none;
+}
+
+.red {
+	background: red;
+}
+
+.green{
+	background: green;
+}
