@@ -105,7 +105,6 @@ nav ul li a .tercero {
 /*button style*/
 .myButton {
 	display: block;
-	vertical-align: bottom;
 	-moz-box-shadow:inset 0px 1px 3px 0px #91b8b3;
 	-webkit-box-shadow:inset 0px 1px 3px 0px #91b8b3;
 	box-shadow:inset 0px 1px 3px 0px #91b8b3;
@@ -185,7 +184,7 @@ cursor:pointer
 .emergencia{
     display: inline-block;
 		position: absolute;
-		z-index: 1
+		z-index: 1;
     padding: 0.5em 1em;
     text-decoration: none;
     background: red;/*ButtonColor*/
@@ -193,7 +192,6 @@ cursor:pointer
     border-bottom: solid 4px #627295;
     border-radius: 3px;
 		width: 160px;
-		height: 130px
 		overflow: auto;
 		font-family: 'Orbitron', sans-serif;
 }
@@ -211,4 +209,25 @@ cursor:pointer
 
 .green{
 	background: green;
+}
+
+.btn.btn-info.btn-lg{
+	color: transparent;
+	background-color: transparent;
+	border-color: transparent;
+	position: absolute;
+}
+
+#Nodo_611{
+	width:30px;
+	height:70px;
+	left: 443px;
+	top: 410px;
+}
+
+#Nodo_671{
+	width:80px;
+	height:30px;
+    left: 648px;
+    top: 334px;
 }
