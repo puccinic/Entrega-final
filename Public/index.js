@@ -9,10 +9,14 @@ $(".btn.btn-info.btn-lg").on('click',function() {
         Tablero: $(this).attr('id'),
     }
     $.get('/refresh', data, function(data){
-        const keys = Object.keys(data);
-        const values = Object.values(data);
+        console.log(data);
+        const keys = Object.keys(data[0]);
+        const values = Object.values(data[0]);
         for (let i = 1; i < keys.length-1; i++){
-            if (keys[i] == 'emergencia') continue;
+            if (keys[i] == 'emergencia'){
+                alert("El boton de alerta se encuentra Activado por favor desactivelo para poder efectuar cambios");
+                continue;
+            }
             switch (values[i]){
                 case 1:
                     $('#'+keys[i]).addClass('green').removeClass('red');

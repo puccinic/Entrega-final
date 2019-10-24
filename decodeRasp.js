@@ -24,18 +24,17 @@ exports.insert = (req, res) => {
     res.send('done');
 };
 
-exports.get = (req, res) => {
+exports.get = (req,res) => {
     const con = mysql.createConnection(dbCon);
 
     con.connect();
-    const sql = `SELECT * FROM ${req.query.Tablero} WHERE time = (SELECT Max(time) FROM ${req.query.Tablero}) ;`;
+    const sql = `SELECT * FROM ${req.query.Tablero} ORDER BY time DESC LIMIT 10;`;
     con.query(sql, function(err, result) {
         if (err) throw err;
-        console.log(result);
-        res.json(result[0]);
+        res.json(result);
     });
     con.end();
-};
+}
 
 exports.search = (req, res) => {
     const con = mysql.createConnection(dbCon);
