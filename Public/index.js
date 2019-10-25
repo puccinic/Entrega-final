@@ -14,7 +14,9 @@ $(".btn.btn-info.btn-lg").on('click',function() {
         const values = Object.values(data[0]);
         for (let i = 1; i < keys.length-1; i++){
             if (keys[i] == 'emergencia'){
-                alert("El boton de alerta se encuentra Activado por favor desactivelo para poder efectuar cambios");
+                if (values[i] == '1'){
+                    alert("El boton de alerta se encuentra Activado");
+                }
                 continue;
             }
             switch (values[i]){
