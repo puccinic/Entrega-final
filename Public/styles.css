@@ -10,8 +10,40 @@ header {
     height: 70px;
     position: relative;
 }
-h1 {
-        font-family: 'Orbitron', sans-serif;
+
+#labelinit {
+position: relative;
+left: -40px;
+}
+
+#init-date {
+	position: relative;
+	left: -40px;
+}
+
+#labelfinal {
+position: relative;
+left: 375px;
+top: -52px
+}
+
+#final-date {
+	position: relative;
+	left: 375px;
+	top: -52px
+}
+
+table{
+	position: relative;
+	left: 150px;
+	top: -20px;
+	font-size: 15px;
+}
+
+
+input {
+position: relative;
+left: 190px;
 }
 
 nav {
@@ -54,6 +86,7 @@ nav > ul li a {
 	-ms-transition: all .3s ease;
 	-o-transition: all .3s ease;
 	transition: all .3s ease;
+	cursor: pointer;
 }
 
 nav > ul > li > a span {
@@ -69,6 +102,7 @@ nav > ul > li > a span {
 	-ms-transition: all .3s ease;
 	-o-transition: all .3s ease;
 	transition: all .3s ease;
+	cursor: pointer;
 }
 
 nav > ul > li > a span .icon {
