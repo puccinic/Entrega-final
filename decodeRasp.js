@@ -15,7 +15,7 @@ exports.insert = (req, res) => {
     const stateValues = Object.values(req.body.Estados);
     const con = mysql.createConnection(dbCon);
     con.connect();
-    const sql = `INSERT INTO Datos_${req.body.Tablero}(${stateKeys},time) VALUES(${stateValues},${req.body.Fecha})`;
+    const sql = `INSERT INTO Datos_${req.body.Tablero}(${stateKeys}) VALUES(${stateValues})`;
     con.query(sql,function(err, result) {
         if (err) throw err;
         console.log("record inserted");
