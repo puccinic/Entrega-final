@@ -1,66 +1,70 @@
-$('.round-button').on('click',function() {
-    $(this).toggleClass('red');
+let data = {};
+
+$('.round-button').on('click', function () {
     $(this).toggleClass('green');
+    const id = $(this).attr('id');
+    data.Estados = {};
+    data.Estados[id] = $(this).hasClass('green');
+    $.post('/',data);
 });
 
-$('#emergencia').click(function() {
-  $('#indicador').toggleClass('invisible');
-  $('#indicador').toggleClass('visible');
-  $('#gen1').removeClass('green');
-  $('#gen2').removeClass('green');
-  $('#gen3').removeClass('green');
-  $('#carga').removeClass('green');
-  $('#linea').removeClass('green');
-  $('#capacitor').removeClass('green');
-  $('#emergencia').toggleClass('blue');
-  if ($("#emergencia").text("Emergencia")) {
-      $("#emergencia").text("Reactivar");
-   }
-   else {
-      $("#emergencia").text("Emergencia");
-   }
+$('#emergencia').click(emergenciaOnClick);
 
-  if ($("#gen1").attr("disabled") || $("#gen2").attr("disabled") || $("#gen3").attr("disabled")
-      || $("#carga").attr("disabled") || $("#linea").attr("disabled") || $("#capacitor").attr("disabled")) {
-        $("#gen1").removeAttr("disabled");
-        $("#gen2").removeAttr("disabled");
-        $("#gen3").removeAttr("disabled");
-        $("#carga").removeAttr("disabled");
-        $("#linea").removeAttr("disabled");
-        $("#capacitor").removeAttr("disabled");
-    } else {
-        $("#gen1").attr("disabled", "disabled");
-        $("#gen2").attr("disabled", "disabled");
-        $("#gen3").attr("disabled", "disabled");
-        $("#carga").attr("disabled", "disabled");
-        $("#linea").attr("disabled", "disabled");
-        $("#capacitor").attr("disabled", "disabled");
-    }
-});
+$(".btn.btn-info.btn-lg").on('click', function () {
 
-$(".btn.btn-info.btn-lg").on('click',function() {
-    data = {
-        Tablero: $(this).attr('id'),
-    }
-    $.get('/refresh', data, function(data){
+    data.Tablero = $(this).attr('id');
+
+    $.get('/refresh', data, function (data) {
         console.log(data);
         const keys = Object.keys(data[0]);
         const values = Object.values(data[0]);
-        for (let i = 1; i < keys.length-1; i++){
-            if (keys[i] == 'emergencia'){
-                if (values[i] == '1'){
+        for (let i = 1; i < keys.length - 1; i++) {
+            if (keys[i] == 'emergencia') {
+                if (values[i] == '1') {
                     alert("El boton de alerta se encuentra Activado");
+                    emergenciaOnClick();
                 }
                 continue;
             }
-            switch (values[i]){
+            switch (values[i]) {
                 case 1:
-                    $('#'+keys[i]).addClass('green').removeClass('red');
+                    $('#' + keys[i]).addClass('green').removeClass('red');
                     break;
                 default:
-                    $('#'+keys[i]).addClass('red').removeClass('green');
+                    $('#' + keys[i]).addClass('red').removeClass('green');
                     break;
             }
         }
     });
 });
+
+
+
+function emergenciaOnClick() {
+
+    $('#indicador').toggleClass('visible');
+    $('.round-button').removeClass('green');
+    $("#emergencia").toggleClass('blue');
+    data.Estados = {};
+    data.Estados.emergencia = $(this).hasClass('blue');
+    $.post('/',data);
+    
+    if ($("#emergencia").text() == 'Emergencia') {
+        $("#emergencia").text("Reactivar");
+        $("#gen1").attr("disabled", true);
+        $("#gen2").attr("disabled", true);
+        $("#gen3").attr("disabled", true);
+        $("#carga").attr("disabled", true);
+        $("#linea").attr("disabled", true);
+        $("#cap").attr("disabled", true);
+    }
+    else {
+        $("#emergencia").text("Emergencia");
+        $("#gen1").attr("disabled", false);
+        $("#gen2").attr("disabled", false);
+        $("#gen3").attr("disabled", false);
+        $("#carga").attr("disabled", false);
+        $("#linea").attr("disabled", false);
+        $("#cap").attr("disabled", false);
+    }
+}
