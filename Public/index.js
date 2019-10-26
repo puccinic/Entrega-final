@@ -117,4 +117,4 @@ function update() {
     });
 }
 
-window.setInterval(update,2000);
+window.setInterval(update,5000);
