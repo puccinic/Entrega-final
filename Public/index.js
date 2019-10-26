@@ -63,50 +63,60 @@ $('#his-button').on('click', function () {
     });
 });
 
-    function emergenciaOnClick() {
-
-        $('#indicador').toggleClass('visible');
+function emergenciaOnClick() {
+    
+    if ($("#emergencia").text() == 'Emergencia') {
+        $("#emergencia").text("Reactivar");
+        $(".round-button").attr("disabled", true);
+        $('#indicador').addClass('visible');
         $('.round-button').removeClass('green');
-        $("#emergencia").toggleClass('blue');
-        data.Estados = {};
-        data.Estados.emergencia = $(this).hasClass('blue');
-        $.post('/', data);
-
-        if ($("#emergencia").text() == 'Emergencia') {
-            $("#emergencia").text("Reactivar");
-            $(".round-button").attr("disabled", true);
-        }
-        else {
-
-            $("#emergencia").text("Emergencia");
-            $(".round-button").attr("disabled", false);
-        }
-    }
-
-    function update() {
-
-        data.Tablero = 'Nodo_611';
-
-        $.get('/refresh', data, function (data) {
-            console.log(data);
-            const keys = Object.keys(data[0]);
-            const values = Object.values(data[0]);
-            for (let i = 1; i < keys.length - 1; i++) {
-                if (keys[i] == 'emergencia') {
-                    if (values[i] == '1') {
-                        alert("El boton de alerta se encuentra Activado");
-                        emergenciaOnClick();
-                    }
-                    continue;
-                }
-                switch (values[i]) {
-                    case 1:
-                        $('#' + keys[i]).addClass('green').removeClass('red');
-                        break;
-                    default:
-                        $('#' + keys[i]).addClass('red').removeClass('green');
-                        break;
-                }
-            }
+        $("#emergencia").addClass('blue');
+        const buttons = $('.round-button').toArray();
+        buttons.forEach(element => {
+            const id = $(element).attr('id');
+            data.Estados['id'] == false; 
         });
     }
+    else {
+        $("#emergencia").text("Emergencia");
+        $(".round-button").attr("disabled", false);
+        $('#indicador').removeClass('visible');
+        $("#emergencia").removeClass('blue');
+    }
+    data.Estados = {};
+    data.Estados.emergencia = $(this).hasClass('blue');
+    $.post('/', data);
+}
+
+function update() {
+
+    data.Tablero = 'Nodo_611';
+
+    $.get('/refresh', data, function (data) {
+        console.log(data);
+        const keys = Object.keys(data[0]);
+        const values = Object.values(data[0]);
+        for (let i = 1; i < keys.length - 1; i++) {
+            if (keys[i] == 'emergencia') {
+                if (values[i] == '1') {
+                    $('#indicador').addClass('visible');
+                    $('.round-button').removeClass('green');
+                    $("#emergencia").addClass('blue');
+                } else {
+                    $('#indicador').removeClass('visible');
+                    $("#emergencia").removeClass('blue');
+                }
+
+                continue;
+            }
+            switch (values[i]) {
+                case 1:
+                    $('#' + keys[i]).addClass('green').removeClass('red');
+                    break;
+                default:
+                    $('#' + keys[i]).addClass('red').removeClass('green');
+                    break;
+            }
+        }
+    });
+}
