@@ -10,10 +10,6 @@ $('.round-button').on('click', function () {
 
 $('#emergencia').click(emergenciaOnClick);
 
-$(".btn.btn-info.btn-lg").on('click', update);
-
-$('.segundo').on('click', update);
-
 $('.tercero').on('click', function () {
     data.Tablero = 'Nodo_611';
     $.get('/refresh', data, function (data) {
@@ -120,3 +116,5 @@ function update() {
         }
     });
 }
+
+window.setInterval(update,2000);
