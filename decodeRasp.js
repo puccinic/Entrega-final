@@ -45,7 +45,7 @@ exports.search = (req, res) => {
     con.query(sql, function(err, result) {
         if (err) throw err;
         console.log(result);
-        response.json(result);
+        res.json(result);
     });
     con.end();
 };
