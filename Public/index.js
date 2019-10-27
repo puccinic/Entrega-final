@@ -60,7 +60,7 @@ $('#his-button').on('click', function () {
 });
 
 function emergenciaOnClick() {
-    
+
     if ($("#emergencia").text() == 'Emergencia') {
         $("#emergencia").text("Reactivar");
         $(".round-button").attr("disabled", true);
@@ -70,7 +70,7 @@ function emergenciaOnClick() {
         const buttons = $('.round-button').toArray();
         buttons.forEach(element => {
             const id = $(element).attr('id');
-            data.Estados['id'] == false; 
+            data.Estados['id'] == false;
         });
     }
     else {
@@ -85,36 +85,37 @@ function emergenciaOnClick() {
 }
 
 function update() {
+    if ($('#n611').hasClass('in')){
+        data.Tablero = 'Nodo_611';
 
-    data.Tablero = 'Nodo_611';
+        $.get('/refresh', data, function (data) {
+            console.log(data);
+            const keys = Object.keys(data[0]);
+            const values = Object.values(data[0]);
+            for (let i = 1; i < keys.length - 1; i++) {
+                if (keys[i] == 'emergencia') {
+                    if (values[i] == '1') {
+                        $('#indicador').addClass('visible');
+                        $('.round-button').removeClass('green');
+                        $("#emergencia").addClass('blue');
+                    } else {
+                        $('#indicador').removeClass('visible');
+                        $("#emergencia").removeClass('blue');
+                    }
 
-    $.get('/refresh', data, function (data) {
-        console.log(data);
-        const keys = Object.keys(data[0]);
-        const values = Object.values(data[0]);
-        for (let i = 1; i < keys.length - 1; i++) {
-            if (keys[i] == 'emergencia') {
-                if (values[i] == '1') {
-                    $('#indicador').addClass('visible');
-                    $('.round-button').removeClass('green');
-                    $("#emergencia").addClass('blue');
-                } else {
-                    $('#indicador').removeClass('visible');
-                    $("#emergencia").removeClass('blue');
+                    continue;
                 }
-
-                continue;
+                switch (values[i]) {
+                    case 1:
+                        $('#' + keys[i]).addClass('green').removeClass('red');
+                        break;
+                    default:
+                        $('#' + keys[i]).addClass('red').removeClass('green');
+                        break;
+                }
             }
-            switch (values[i]) {
-                case 1:
-                    $('#' + keys[i]).addClass('green').removeClass('red');
-                    break;
-                default:
-                    $('#' + keys[i]).addClass('red').removeClass('green');
-                    break;
-            }
-        }
-    });
+        });
+    }
 }
 
-window.setInterval(update,5000);
+window.setInterval(update, 2000);
