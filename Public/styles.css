@@ -13,33 +13,59 @@ header {
 
 #labelinit {
 position: relative;
-left: -40px;
+left: -50px;
+font-family: 'Orbitron', sans-serif;
 }
 
 #init-date {
 	position: relative;
-	left: -40px;
+	left: -50px;
 }
 
 #labelfinal {
+	font-family: 'Orbitron', sans-serif;
 position: relative;
-left: 375px;
-top: -52px
+left: 395px;
+top: -53px
 }
 
 #final-date {
 	position: relative;
-	left: 375px;
+	left: 395px;
 	top: -52px
 }
 
 table{
 	position: relative;
-	left: 150px;
-	top: -20px;
+	left: 130px;
+	top: 0px;
 	font-size: 15px;
+	width: 1000px;
+	height: 360px;
 }
 
+table th, table td{
+    text-align: left;
+		width: 100px;
+}
+
+table td{
+    border-bottom: 1px solid black;
+}
+
+table tbody{
+    display: block;
+    overflow: auto;
+    height: 322px;
+		width: 720px
+}
+
+ table thead{
+	 font-family: 'Orbitron', sans-serif;
+     width:700px;
+     display: table;
+		 text-align: left;
+ }
 
 input {
 position: relative;
@@ -227,6 +253,14 @@ cursor:pointer
     transform: translateY(4px);/*Move down*/
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*Reduce Shadow*/
     border-bottom: none;
+}
+
+#his-button  {
+		border: 1px solid black;
+		font-family: 'Orbitron', sans-serif;
+		position: relative;
+		top: -13px;
+		left: -40px;
 }
 
 .text {
