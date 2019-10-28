@@ -1,10 +1,10 @@
 let data = {};
 
 $('.round-button').on('click', function () {
-    $(this).toggleClass('green');
+    $(this).toggleClass('on');
     const id = $(this).attr('id');
     data.Estados = {};
-    data.Estados[id] = $(this).hasClass('green');
+    data.Estados[id] = $(this).hasClass('on');
     $.post('/', data);
 });
 
@@ -62,11 +62,7 @@ $('#his-button').on('click', function () {
 function emergenciaOnClick() {
 
     if ($("#emergencia").text() == 'Emergencia') {
-        $("#emergencia").text("Reactivar");
-        $(".round-button").attr("disabled", true);
-        $('#indicador').addClass('visible');
-        $('.round-button').removeClass('green');
-        $("#emergencia").addClass('blue');
+        $('#emergencia').addClass('on');
         const buttons = $('.round-button').toArray();
         buttons.forEach(element => {
             const id = $(element).attr('id');
@@ -74,13 +70,10 @@ function emergenciaOnClick() {
         });
     }
     else {
-        $("#emergencia").text("Emergencia");
-        $(".round-button").attr("disabled", false);
-        $('#indicador').removeClass('visible');
-        $("#emergencia").removeClass('blue');
+        $('#emergencia').removeClass('on');
     }
     data.Estados = {};
-    data.Estados.emergencia = $(this).hasClass('blue');
+    data.Estados.emergencia = $('#emergencia').hasClass('on');
     $.post('/', data);
 }
 
@@ -95,22 +88,28 @@ function update() {
             for (let i = 1; i < keys.length - 1; i++) {
                 if (keys[i] == 'emergencia') {
                     if (values[i] == '1') {
+                        $(".round-button").attr("disabled", true);
+                        $("#emergencia").text("Reactivar");
                         $('#indicador').addClass('visible');
                         $('.round-button').removeClass('green');
                         $("#emergencia").addClass('blue');
+                        $('#emergencia').addClass('on');
                     } else {
+                        $(".round-button").attr("disabled", false);
+                        $("#emergencia").text("Emergencia");
                         $('#indicador').removeClass('visible');
                         $("#emergencia").removeClass('blue');
+                        $('#emergencia').removeClass('on');
                     }
 
                     continue;
                 }
                 switch (values[i]) {
                     case 1:
-                        $('#' + keys[i]).addClass('green').removeClass('red');
+                        $('#' + keys[i]).addClass('green').addClass('on');
                         break;
                     default:
-                        $('#' + keys[i]).addClass('red').removeClass('green');
+                        $('#' + keys[i]).removeClass('green').removeClass('on');
                         break;
                 }
             }
